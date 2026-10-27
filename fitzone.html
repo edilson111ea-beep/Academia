@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FitZone — Stronger Everyday</title>
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#0a0b0d;--bg2:#0f1114;--surface:#121417;--line:#272a30;--y:#f2b705;--y2:#ffc61a;--tx:#fff;--mute:#a3a7ae;--h:'Archivo','Arial Narrow',Arial,sans-serif;--b:'Inter',system-ui,sans-serif;
+color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 15px/1.6 var(--b);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--y);outline-offset:3px}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--y);color:#111;font:700 12px/1 var(--h);letter-spacing:.04em;text-transform:uppercase;padding:14px 20px;border-radius:3px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--y2);transform:translateY(-1px)}
+.btn svg{font-size:15px}
+.eyebrow{color:var(--y);font:600 12px/1 var(--h);letter-spacing:.14em;text-transform:uppercase}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(10,11,13,.92);backdrop-filter:blur(8px);border-bottom:1px solid #16181c;padding-top:env(safe-area-inset-top,0px)}
+header::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(10,11,13,.92);z-index:-1}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--y)}
+.logo svg{font-size:34px}
+.logo b{display:block;color:#fff;font:800 26px/1 var(--h);letter-spacing:.01em}.logo b span{color:var(--y)}
+.logo small{display:block;color:var(--mute);font:600 8px/1 var(--h);letter-spacing:.32em;margin-top:4px}
+.links{display:flex;gap:30px;font:600 11.5px/1 var(--h);letter-spacing:.06em;text-transform:uppercase}
+.links a{padding:26px 0 24px;border-bottom:2px solid transparent;transition:color .2s}
+.links a:hover,.links a.on{color:var(--y)}.links a.on{border-color:var(--y)}
+.burger{display:none;background:none;border:1px solid var(--line);color:#fff;border-radius:4px;width:42px;height:42px;font-size:20px;cursor:pointer;place-items:center}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;min-height:540px;align-items:center;position:relative;z-index:2}
+.hero h2{font:700 clamp(18px,2.1vw,26px)/1.3 var(--h);margin:0 0 18px;letter-spacing:.01em}
+.hero h1{font:800 clamp(52px,7.4vw,104px)/.95 var(--h);margin:0;letter-spacing:-.01em;text-transform:uppercase}
+.hero h1 em{display:block;color:var(--y);font-style:normal}
+.hero .rule{width:36px;height:2px;background:var(--y);margin:34px 0 22px}
+.hero p{max-width:340px;color:#d5d7db;margin:0 0 30px;font-size:15px}
+.cta{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.play{display:inline-flex;align-items:center;gap:12px;font:600 11.5px/1 var(--h);letter-spacing:.06em;text-transform:uppercase;background:none;border:0;color:#fff;cursor:pointer;padding:0}
+.play span{width:34px;height:34px;border:1.5px solid #fff;border-radius:50%;display:grid;place-items:center;transition:border-color .2s,color .2s}
+.play:hover span{border-color:var(--y);color:var(--y)}
+.hero-img{position:absolute;inset:0 0 0 38%;z-index:1;background:var(--img,none) center/cover,radial-gradient(60% 70% at 62% 38%,#2a2b2e 0,#15161a 55%,transparent 80%),linear-gradient(90deg,var(--bg) 0,transparent 35%),#0c0d10;mask-image:linear-gradient(90deg,transparent 0,#000 28%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%)}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0,transparent 30%)}
+.hero-img svg{position:absolute;right:12%;top:18%;width:46%;color:#fff;opacity:.05;stroke-width:.5}
+.hero-copy{padding:70px 0 54px}
+
+/* features bar */
+.bar{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(18,20,23,.92);border:1px solid var(--line);border-radius:10px;margin-bottom:0;transform:translateY(0)}
+.bar>div{display:flex;gap:16px;padding:26px 24px;align-items:flex-start}
+.bar>div+div{border-left:1px solid var(--line)}
+.bar svg{font-size:38px;color:var(--y);margin-top:2px}
+.bar h3,.card h3{font:700 12px/1.3 var(--h);letter-spacing:.05em;text-transform:uppercase;margin:0 0 6px}
+.bar p{margin:0;font-size:12px;line-height:1.55;color:var(--mute)}
+.bar-wrap{background:linear-gradient(180deg,transparent 0,var(--bg) 0);padding:8px 0 48px;position:relative;z-index:3}
+
+/* programs */
+.programs{background:var(--bg2);padding:56px 0 52px}
+.head{text-align:center;margin-bottom:34px}
+.head h2,.about h2{font:800 clamp(26px,3vw,36px)/1.15 var(--h);text-transform:uppercase;margin:12px 0 0;letter-spacing:.01em}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
+.card:hover{border-color:#4a4122;transform:translateY(-3px)}
+.ph{aspect-ratio:4/3;position:relative;background:var(--img,none) center/cover,radial-gradient(70% 80% at 50% 35%,#34363b 0,#17181c 70%),#101114;display:grid;place-items:center;color:#fff}
+.ph>svg{font-size:64px;opacity:.07;stroke-width:.8}
+.ph::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(0deg,var(--surface),transparent)}
+.card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:0;flex:1}
+.card .ic{font-size:26px;color:var(--y);margin-bottom:-6px}
+.card .row{display:flex;gap:14px}
+.card p{font-size:12px;line-height:1.55;color:var(--mute);margin:0 0 18px}
+.more{margin-top:auto;color:var(--y);font:700 11px/1 var(--h);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;gap:8px;align-items:center}
+.more:hover{color:var(--y2)}
+
+/* about */
+.about{background:var(--bg);padding:48px 0}
+.about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center}
+.about .ph{aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.about .ph::after{display:none}
+.about h2{margin:14px 0 18px}
+.about p{max-width:460px;color:#d5d7db;font-size:13px;line-height:1.7;margin:0 0 24px}
+
+/* contact bar */
+.info{background:#0c0d10;border-top:1px solid #1a1c20;padding:26px 0}
+.info-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.info-grid>div{display:flex;gap:14px;padding:4px 26px;align-items:flex-start}
+.info-grid>div+div{border-left:1px solid var(--line)}
+.info-grid>div:first-child{padding-left:0}
+.info svg{font-size:22px;color:var(--y);margin-top:2px}
+.info h4{margin:0 0 6px;font:700 10px/1 var(--h);letter-spacing:.08em;text-transform:uppercase}
+.info p{margin:0;font-size:11.5px;line-height:1.6;color:var(--mute)}
+footer{background:#08090b;color:#6e727a;font-size:11px;text-align:center;padding:16px 24px calc(16px + env(safe-area-inset-bottom,0px))}
+
+/* responsive */
+@media(max-width:1080px){.links{gap:18px}.cards{grid-template-columns:repeat(2,1fr)}.bar{grid-template-columns:repeat(2,1fr)}.bar>div:nth-child(3){border-left:0}.bar>div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media(max-width:900px){
+ .burger{display:grid}.nav>.btn{display:none}
+ .links{position:absolute;left:0;right:0;top:100%;background:#0a0b0d;flex-direction:column;gap:0;padding:8px 24px 16px;border-bottom:1px solid var(--line);display:none}
+ .links.open{display:flex}.links a{padding:14px 0;border-bottom:1px solid #16181c}
+ .hero-grid{grid-template-columns:1fr;min-height:0}
+ .hero-img{inset:0;opacity:.5;mask-image:none;-webkit-mask-image:none}
+ .hero-copy{padding:56px 0 36px}
+ .about-grid{grid-template-columns:1fr}.about-grid .ph{order:2}
+ .info-grid{grid-template-columns:repeat(2,1fr);row-gap:22px}.info-grid>div:nth-child(3){border-left:0;padding-left:0}
+}
+@media(max-width:560px){
+ .wrap{width:calc(100% - 32px)}
+ .cards{gap:12px}.card .body{padding:14px}.card p{font-size:11.5px}
+ .bar{grid-template-columns:1fr}.bar>div+div{border-left:0;border-top:1px solid var(--line)}
+ .info-grid{grid-template-columns:1fr}.info-grid>div{padding:0!important;border:0!important}
+ .cards{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="dumb" viewBox="0 0 48 48"><rect x="2" y="16" width="5" height="16" rx="1.5"/><rect x="7" y="12" width="6" height="24" rx="1.5"/><rect x="35" y="12" width="6" height="24" rx="1.5"/><rect x="41" y="16" width="5" height="16" rx="1.5"/><path d="M13 24h22"/></symbol>
+<symbol id="coach" viewBox="0 0 48 48"><path d="M11 42c0-8 5-13 13-13s13 5 13 13z"/><circle cx="24" cy="17" r="7"/><path d="M16 12c1-5 4-7 8-7s7 2 8 7z"/><path d="M24 29v13"/></symbol>
+<symbol id="plan" viewBox="0 0 48 48"><rect x="10" y="7" width="28" height="36" rx="3"/><path d="M18 5h12v6H18zM16 20h3m5 0h8M16 27h3m5 0h8M16 34h3m5 0h8"/></symbol>
+<symbol id="crowd" viewBox="0 0 48 48"><circle cx="24" cy="14" r="5"/><circle cx="10" cy="19" r="4"/><circle cx="38" cy="19" r="4"/><path d="M14 38c0-7 4-11 10-11s10 4 10 11zM2 36c0-5 3-8 8-8M46 36c0-5-3-8-8-8"/></symbol>
+<symbol id="flame" viewBox="0 0 24 24"><path d="M12 3c1 4 6 6 6 12a6 6 0 0 1-12 0c0-3 2-4 3-7 1 1 1 2 2 3 1-2 1-5 1-8z"/></symbol>
+<symbol id="run" viewBox="0 0 24 24"><circle cx="15" cy="4.5" r="2"/><path d="M9 21l3-6-3-3 2-5 4 2 3 3M7 12l2-4 3-1M12 15l4 2 1 4"/></symbol>
+<symbol id="lotus" viewBox="0 0 24 24"><path d="M12 4c3 3 3 9 0 13-3-4-3-10 0-13zM3 9c5 0 8 3 9 8-5 0-8-3-9-8zM21 9c-5 0-8 3-9 8 5 0 8-3 9-8zM5 20h14"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.500 7 12 7 12z"/><circle cx="12" cy="10" r="2.500"/></symbol>
+<symbol id="tel" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.500 1.500a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="currentColor"/></symbol>
+</defs>
+</svg>
+
+<header>
+ <div class="wrap nav">
+  <a class="logo" href="#inicio" aria-label="FitZone — início">
+   <svg class="i"><use href="#dumb"/></svg>
+   <span><b>FIT<span>ZONE</span></b><small>STRONGER EVERYDAY</small></span>
+  </a>
+  <nav><div class="links" id="links">
+   <a class="on" href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#programas">Programas</a><a href="#sobre">Treinadores</a><a href="#contato">Planos</a><a href="#programas">Galeria</a><a href="#sobre">Blog</a><a href="#contato">Contato</a>
+  </div></nav>
+  <a class="btn" href="#contato">Entrar agora</a>
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><svg class="i"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+ <!-- Para usar foto real: style="--img:url('hero.jpg')" -->
+ <div class="hero-img" aria-hidden="true"><svg class="i" viewBox="0 0 48 48"><use href="#dumb"/></svg></div>
+ <div class="wrap hero-grid">
+  <div class="hero-copy">
+   <h2>CONSTRUA FORÇA.<br>CONSTRUA CONFIANÇA.</h2>
+   <h1>Seja<em>o seu melhor</em></h1>
+   <div class="rule"></div>
+   <p>Faça parte de uma comunidade que te impulsiona, te apoia e te ajuda a se tornar a versão mais forte de você.</p>
+   <div class="cta">
+    <a class="btn" href="#contato">Entrar agora <svg class="i"><use href="#arrow"/></svg></a>
+    <button class="play" type="button"><span><svg class="i"><use href="#play"/></svg></span>Assistir vídeo</button>
+   </div>
+  </div>
+ </div>
+ <div class="bar-wrap"><div class="wrap">
+  <div class="bar">
+   <div><svg class="i"><use href="#dumb"/></svg><span><h3>Equipamentos modernos</h3><p>Máquinas e equipamentos de qualidade para treinos eficientes.</p></span></div>
+   <div><svg class="i"><use href="#coach"/></svg><span><h3>Treinadores especialistas</h3><p>Profissionais certificados e experientes para guiar cada passo.</p></span></div>
+   <div><svg class="i"><use href="#plan"/></svg><span><h3>Planos personalizados</h3><p>Treino e dieta alinhados aos seus objetivos e rotina.</p></span></div>
+   <div><svg class="i"><use href="#crowd"/></svg><span><h3>Comunidade acolhedora</h3><p>Um ambiente positivo que mantém você motivado e constante.</p></span></div>
+  </div>
+ </div></div>
+</section>
+
+<section class="programs" id="programas">
+ <div class="wrap">
+  <div class="head"><div class="eyebrow">Nossos programas</div><h2>Treine. Foque. Conquiste.</h2></div>
+  <div class="cards">
+   <article class="card"><div class="ph"><svg class="i"><use href="#dumb"/></svg></div><div class="body"><div class="row"><svg class="i ic"><use href="#dumb"/></svg><h3 style="margin-top:6px">Treino de força</h3></div><p>Ganhe massa magra e aumente sua força geral.</p><a class="more" href="#contato">Saiba mais <svg class="i"><use href="#arrow"/></svg></a></div></article>
+   <article class="card"><div class="ph"><svg class="i"><use href="#flame"/></svg></div><div class="body"><div class="row"><svg class="i ic"><use href="#flame"/></svg><h3 style="margin-top:6px">Emagrecimento</h3></div><p>Programas eficazes de queima de gordura para uma vida mais saudável.</p><a class="more" href="#contato">Saiba mais <svg class="i"><use href="#arrow"/></svg></a></div></article>
+   <article class="card"><div class="ph"><svg class="i"><use href="#run"/></svg></div><div class="body"><div class="row"><svg class="i ic"><use href="#run"/></svg><h3 style="margin-top:6px">Treino funcional</h3></div><p>Melhore mobilidade, resistência e desempenho no dia a dia.</p><a class="more" href="#contato">Saiba mais <svg class="i"><use href="#arrow"/></svg></a></div></article>
+   <article class="card"><div class="ph"><svg class="i"><use href="#lotus"/></svg></div><div class="body"><div class="row"><svg class="i ic"><use href="#lotus"/></svg><h3 style="margin-top:6px">Yoga &amp; bem-estar</h3></div><p>Equilibre corpo e mente com yoga e alongamento.</p><a class="more" href="#contato">Saiba mais <svg class="i"><use href="#arrow"/></svg></a></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="about" id="sobre">
+ <div class="wrap about-grid">
+  <div class="ph" role="img" aria-label="Espaço de treino da FitZone"><svg class="i" style="font-size:96px"><use href="#dumb"/></svg></div>
+  <div>
+   <div class="eyebrow">Sobre nós</div>
+   <h2>Mais que uma academia,<br>somos uma comunidade.</h2>
+   <p>Na FitZone, acreditamos que fitness é um estilo de vida. Nossa missão é ajudar você a manter a constância, ficar mais forte e viver melhor. Não importa onde você comece, estamos aqui para te ajudar a alcançar seus objetivos.</p>
+   <a class="btn" href="#contato">Entrar na comunidade <svg class="i"><use href="#arrow"/></svg></a>
+  </div>
+ </div>
+</section>
+</main>
+
+<section class="info" id="contato">
+ <div class="wrap info-grid">
+  <div><svg class="i"><use href="#pin"/></svg><span><h4>Endereço</h4><p>Rua Fitness, 123<br>Coimbatore, Tamil Nadu 641001</p></span></div>
+  <div><svg class="i"><use href="#tel"/></svg><span><h4>Telefone</h4><p>+91 91596 81276</p></span></div>
+  <div><svg class="i"><use href="#mail"/></svg><span><h4>E-mail</h4><p>hello@fitzone.com</p></span></div>
+  <div><svg class="i"><use href="#clock"/></svg><span><h4>Horário de funcionamento</h4><p>Seg – Sáb: 5h30 – 22h<br>Domingo: 6h – 13h</p></span></div>
+ </div>
+</section>
+<footer>© 2026 FitZone. Todos os direitos reservados.</footer>
+
+<script>
+const b=document.getElementById('burger'),l=document.getElementById('links');
+b.addEventListener('click',()=>{const o=l.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+l.addEventListener('click',e=>{if(e.target.tagName==='A'){l.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+</script>
+</body>
+</html>
